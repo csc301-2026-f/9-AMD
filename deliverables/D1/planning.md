@@ -92,6 +92,11 @@ List each team member and:
 
 
 #### Q8: How will you work as a team?
+We plan to meet weekly as a team over discord to share progress, discuss any issues, and plan our next steps. We will also schedule additional meetings or coding sessions when needed, especially for debugging and integrating different parts of the project. We will also use GitHub issues to track tasks and pull requests to review each other's code.
+
+We have been meeting with our AMD project partner to discuss the project scope and expectations. Our first meeting focused on exploring possible directions for extending Schola, including advanced inference, environment generation, and agent benchmarking. A follow-up meeting was planned to narrow down these ideas and agree on a realistic scope for the semester.
+
+For the rest of the term, we plan to meet with our partner regularly over Microsoft Teams to share updates, ask questions, and get feedback on our progress. We will use Teams for day-to-day communication and email for more formal updates.
 
 Describe meetings (and other events) you are planning to have. 
  * When and where? Recurring or ad hoc? In-person or online?
