@@ -77,6 +77,7 @@ Do a team-building activity in-person or online. This can be playing an online g
 * Provide a few sentences on what you did and share a picture or other evidence of your team building activity.
 * Share at least three fun facts from members of you team (total not 3 for each member).
 
+For our team-building activity, we decided to play Wordle together online. During this activity, we were able to get to know each other better and it was a lot of fun. Some fun facts we collected were that Chloe used to have a pet turtle, and both Olivia and Jace can type 160+ wpm.
 
 #### Q7: What are the roles & responsibilities on the team?
 
@@ -89,14 +90,18 @@ Describe the different roles on the team and the responsibilities associated wit
 List each team member and:
  * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
  * Why did you choose them to take that role? Specify if they are interested in learning that part, experienced in it, or any other reasons. Do no make things up. This part is not graded but may be reviewed later.
+ 
+Max - Partner liaison, Background NPCs
+Prithvi - Event-Based and Background NPCs
+Clementine -Shared Policy NPCs: She's interested in shared-policy inference because it combines machine learning, inference optimization, and system integration. 
+Jason - Online learning: He is interested in evaluating ML algorithms, as well as learning more about model updating and data pipelines
+Jaela - Background/shared policy Npcs (inference): She is interested in machine learning engineering and wants to learn more about efficient model inference
+Jace - Online learning: Similarly to Olivia, he is interested in this because game dev has always been a direction he’s wanted to explore
+Olivia - Online learning: She is interested in this because of her strong gamedev background: online learning has a more tangible effect on games which is something she would like to explore
+Chloe - Online learning: Chloe is most interested in the online learning portion because she has an interest in video games and game development, which the online learning portion is has large implications for
 
 
 #### Q8: How will you work as a team?
-We plan to meet weekly as a team over discord to share progress, discuss any issues, and plan our next steps. We will also schedule additional meetings or coding sessions when needed, especially for debugging and integrating different parts of the project. We will also use GitHub issues to track tasks and pull requests to review each other's code.
-
-We have been meeting with our AMD project partner to discuss the project scope and expectations. Our first meeting focused on exploring possible directions for extending Schola, including advanced inference, environment generation, and agent benchmarking. A follow-up meeting was planned to narrow down these ideas and agree on a realistic scope for the semester.
-
-For the rest of the term, we plan to meet with our partner regularly over Microsoft Teams to share updates, ask questions, and get feedback on our progress. We will use Teams for day-to-day communication and email for more formal updates.
 
 Describe meetings (and other events) you are planning to have. 
  * When and where? Recurring or ad hoc? In-person or online?
@@ -105,7 +110,13 @@ Describe meetings (and other events) you are planning to have.
  * You should have 2 meetings with your project partner (if you have one) before D1 is due. Describe them here:
    * You must keep track of meeting minutes and add them to your repo under "deliverables/minutes" folder
    * You must have a regular meeting schedule established for the rest of the term.  
-  
+
+We plan to meet weekly as a team over discord to share progress, discuss any issues, and plan our next steps. We will also schedule additional meetings or coding sessions when needed, especially for debugging and integrating different parts of the project. We will also use GitHub issues to track tasks and pull requests to review each other's code.
+
+We have been meeting with our AMD project partner to discuss the project scope and expectations. Our first meeting focused on exploring possible directions for extending Schola, including advanced inference, environment generation, and agent benchmarking. A follow-up meeting was planned to narrow down these ideas and agree on a realistic scope for the semester.
+
+For the rest of the term, we plan to meet with our partner regularly over Microsoft Teams to share updates, ask questions, and get feedback on our progress. We will use Teams for day-to-day communication and email for more formal updates.
+
 #### Q9: How will you organize your team?
 
 List/describe the artifacts you will produce to organize your team. (We strongly recommend that you use standard collaboration tools like Linear.app, Jira, Slack, Discord, GitHub.)       
@@ -117,15 +128,21 @@ List/describe the artifacts you will produce to organize your team. (We strongly
    * How do tasks get assigned to team members?
    * How do you determine the status of work from inception to completion?
 
+We use Discord to communicate, with separate channels for things like meeting summaries, announcements, important documents and general discussions. We will also set up a shared Google folder. For to-dos, assigning tasks and prioritizing tasks, and to-dos, we will use the GitHub Projects feature to keep track of issues, tasks, blockers and ideas. We will also use this to track the flow of a task from inception to completion.
+
 #### Q10: What are the rules regarding how your team works?
 
 **Communications:**
- * What is the expected frequency? What methods/channels will be used? 
- * If you have a partner project, what is your process for communicating with your partner? Who is responsible?
- 
+_What is the expected frequency? What methods/channels will be used?_
+Ping each other on discord for quick internal communication, discord calls for team meetings; Microsoft teams for partner communication/ weekly meetings with AMD members/ more formal project discussions
+_If you have a partner project, what is your process for communicating with your partner? Who is responsible?_
+Through Microsoft Teams. The partner liaison (Max) is responsible for following up and communicating on behalf of the team. We take meeting notes as well and formalize ideas and expectations regularly after meetings 
+
 **Collaboration:**
- * How are people held accountable for attending meetings, completing action items? What is your process?
- * How will you address the issue if one person doesn't contribute or is not responsive?
+_How are people held accountable for attending meetings, completing action items? What is your process?_
+If a group member is late/not showing up for a meeting, we will @ping them on Discord (our main communication platform). In our server, we organize by channels, such as announcements and to-do’s, and we ping members according to the message content. 
+_How will you address the issue if one person doesn't contribute or is not responsive?_
+First of all, we will try to resolve the situation through contacting the person and sorting out the reason behind their lack of contribution. We will reiterate the tasks they were assigned and the communication standards we agreed upon. However, if they are not responsive for a period of time, we will escalate the issue to the TA, outlining the efforts we made to reconcile the issue ourselves.
 
 ## Organisation Details
 
@@ -134,12 +151,22 @@ List/describe the artifacts you will produce to organize your team. (We strongly
 * Examples include product development that includes developing new features, or quality assurance that includes developing features that test the product reliability, or software maintenance that includes fixing crucial bugs in the product.
 * Provide examples of why you think you fit this role.
 
+Our team will be taking on a product development role as we are developing new features for AMD’s existing Schola framework. We have had discussions with our partner and have decided this is a good scope for the project and AMD’s needs. 
+
+We will be working on infrastructure for several NPC cases, including adaptive (NPCs that learn from player behaviour), event-driven (NPCs that perform inference only when certain events occur), background (NPCs that do batched inference), shared-policy (),
+
+We fit this role because the project requires a combination of machine-learning, game-engine development and software and system architecture. All members of the team have experience with C++, RL, and building software systems.
+
 #### Q12. How does your project fit within the overall product from the partner?
 * Look at the big picture of the product and think about how your project fits into this product.
 * Is your project the first step towards building this product? Is it the first prototype? Are you developing the frontend of a product whose backend is developed by the partner? Are you building the release pipelines for a product that is developed by the partner? Are you building a core feature set and take full ownership of these features?
 * You should also provide details of who else is contributing to what parts of the product, if you have this information. This is more important if the project that you will be working on has strong coupling with parts that will be contributed to by members other than your team (e.g., from a partner).
 * You can be creative for these questions and even use a graphical or pictorial representation to demonstrate the fit.
 * Briefly specify what your partner considers a success for this project. Do they want you to build specific features? Publish a usable product? Just a prototype? Be as specific as you can be at this point.
+
+Schola is AMD’s open-source reinforcement learning framework that connects game engines with Python-based training and inference tools. Our team is responsible for building on the existing framework by adding support for more advanced NPC behaviours and inference patterns. Specifically, we will focus on four main features: adaptive NPCs that learn from player behavior, event-based NPCs that perform inference when specific events occur, background NPCs that use batched inference for better efficiency, and shared-policy NPCs that reuse parts of neural networks. Two other student teams are working on Unity Godot ports of Schola.
+
+A successful project would deliver working, tested, and documented implementations of the 4 core NPC features that can be integrated into Schola.
 
 ## Potential Risks
 
@@ -153,9 +180,21 @@ List/describe the artifacts you will produce to organize your team. (We strongly
   * User stories that are too abstract or too simple
 * For each risk, provide a brief bullet point and then explain the risk in detail. 
 
+This project involves several NPC features, each with different requirements. Implementing and testing all four features might be challenging.
+
+Since we are not creating a new project and simply adding onto an existing framework, we will not have as much control over the scope/implementation. 
+
+Online learning is also a topic that is difficult and theory-heavy, so there may be a learning curve. 
+
+We plan to have several types of steppers, each with a small scope. We may be able to comfortably finish these tasks, so we can add more types of steppers if needed. 
+
+
 #### Q14. What are some potential mitigation strategies for the risks you identified?
 * Examples of mitigation strategies:
   * More communication with the partner might help with improving clarity.
   * Adding more details for an user story might make it less abstract.
   * Adding an extra user story might increase the project complexity, making it less simple.
 * It's ok if you are unable to find mitigation strategies for all the risks right now.
+
+One issue noted was the scope, with multiple features with unique requirements. We could potentially lower this risk by focusing on the planning portion, creating tasks, estimating time per task and reflecting on prediction accuracy every sprint. If we notice that there are too many tasks for the time remaining, we will communicate quickly with each other and the company to determine next steps for prioritization. We may also add/remove user stories depending on how we are progressing with exploring/implementing new topics.
+
