@@ -1,20 +1,22 @@
-# YOUR PRODUCT/TEAM NAME
-​
-> _Note:_ This document is intended to be relatively short. Be concise and precise. Assume the reader has no prior knowledge of your application and is non-technical. 
-​
-## Partner Intro
- * Include the names, emails, titles, primary or secondary point of contact at the partner organization
- * Provide a short description about the partner organization. (2-4 lines)
+# Tooling for Advanced NPC Patterns in AMD Schola, Team 9
+
+Primary point of contact: Alexander Cann, alexander.cann@amd.com
+
+AMD is an American semiconductor company. GPUOpen is an AMD initiative to offer open source advanced effects for computer games.
 
 ## Description about the project
-Keep this section very brief.
- * Provide a high-level description of your application and it's value from an end-user's perspective
- * What is the problem you're trying to solve? Is there any context required to understand **why** the application solves this problem?
-​
+
+An extension to AMD Schola (Unreal Engine's RL library) that makes learned NPC behavior efficient in real games. Schola currently runs inference every frame, one agent at a time, which wastes compute in turn-based games and can't scale to crowds of thousands (e.g., MassEntity simulations). Developers pick an NPC type, attach a trained model, and get efficient behavior without writing training or inference boilerplate.
+
 ## Key Features
- * Describe the key features in the application that the user can access.
- * Provide a breakdown or detail for each feature.
- * This section will be used to assess the value of the features built
+
+Delivered as an Unreal Engine plugin with Python-side support:
+
+1. **Adaptive NPCs:** Learn online from player behavior and adjust during play.
+2. **Event-Based NPCs:** Run inference only when subscribed events fire (e.g., turn start, player enters zone).
+3. **Background NPCs:** Affordable large crowds via batched inference, off-screen culling, and Mass Entity integration.
+4. **Shared-Policy NPCs:** A common network base with specialized outputs per role, so related behaviors run faster than separate models.
+5. **Advanced Strategy NPCs (stretch goal):** Look ahead by simulating opponent moves, as top strategy-game AIs do.
 ​
 ## Instructions
  * Clear instructions for how to use the application from the end-user's perspective
@@ -27,26 +29,23 @@ Keep this section very brief.
  * Briefly describe instructions for setting up and running the application. You should address this part like how one would expect a README doc of real-world deployed application would be.
  * You can see this [example](https://github.com/alichtman/shallow-backup#readme) to get started.
  
- ## Deployment and Github Workflow
-​
-Describe your Git/GitHub workflow. Essentially, we want to understand how your team members share codebase, avoid conflicts and deploys the application.
-​
- * Be concise, yet precise. For example, "we use pull-requests" is not a precise statement since it leaves too many open questions - Pull-requests from where to where? Who reviews the pull-requests? Who is responsible for merging them? etc.
- * If applicable, specify any naming conventions or standards you decide to adopt.
- * Describe your overall deployment process from writing code to viewing a live application
- * What deployment tool(s) are you using? And how?
- * Don't forget to **briefly justify why** you chose this workflow or particular aspects of it!
+ ## Deployment and Github Workflow=
 
- ## Coding Standards and Guidelines
- Keep this section brief, a maximum of 2-3 lines. You would want to read through this [article](https://www.geeksforgeeks.org/coding-standards-and-guidelines/) to get more context about what this section is for before attempting to answer.
-  * These are 2 optional resources that you might want to go through: [article with High level explanation](https://blog.codacy.com/coding-standards-what-are-they-and-why-do-you-need-them/) and [this article with Detailed Explanation](https://google.github.io/styleguide/)
+**Branching:** `main` is the only long-lived branch. Each change gets a short-lived branch from `main` (in a fork, or a branch in the repo for team members), named `feat/<topic>`, `fix/<topic>`.
+
+**Conflict avoidance:** PRs are small and focused, larger changes are discussed in an issue first, and every PR links its issue (`Fixes #123`). Generated protobuf code is never hand-edited. It is regenerated with `schola compile-proto`.
+
+**Pull requests:** Branch → PR to `main`, using the repo's PR template. The author runs the relevant tests first (pytest for Python, Unreal automation tests for C++). At least one team member reviews and approves, then merges. Commits follow Conventional Commits (`feat(python): add X`) so history is scannable and release notes are easy to build.
+
+**Deployment:** Schola is an Unreal Engine plugin, not a hosted app, so there is no live server. Users copy the plugin into their project's `/Plugins` folder, run `pip install -e Resources/python[all]`, and recompile in Unreal. Tools: Git/GitHub, pytest, Doxygen + Sphinx + Breathe for docs. We will use tagged releases because source-distributed plugins ship best that way.
+
+## Coding Standards and Guidelines
+
+C++ follows the Unreal Engine coding standard (`.clang-format`) with Doxygen comments. Python uses Black, PEP 8 and NumPy-style docstrings. New files carry the AMD copyright header.
 ​
- ## Licenses
+## Licenses
 ​
- Keep this section as brief as possible. You may read this [Github article](https://help.github.com/en/github/creating-cloning-and-archiving-repositories/licensing-a-repository) for a start.
-​
- * What type of license will you apply to your codebase? And why?
- * What affect does it have on the development and use of your codebase?
+MIT License, just like the original AMD Schola codebase. There is no significant effect on the development and use of this codebase.
 
 ## Deployed URL / Access Instructions
 
