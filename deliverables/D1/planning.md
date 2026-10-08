@@ -6,35 +6,50 @@
  
 #### Q1: What is the product?
 
- > Short (1 - 2 min' read)
- * Start with a single sentence, high-level description of the product.
- * Be clear - Describe the problem you are solving in simple terms.
- * Specify if you have a partner, who they are (role/title), and the organization information.
- * Be concrete. For example:
-    * What are you planning to build? Is it a website, mobile app, browser extension, command-line app, etc.?      
-    * When describing the problem/need, give concrete examples of common use cases.
-    * Assume the reader knows nothing about the partner or the problem domain and provide the necessary context. 
- * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
-   For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
- * **Feel free (and very much encouraged) to include useful diagrams, mock-ups and/or links**.
+An extension to AMD Schola, an Unreal Engine library for training and running reinforcement learning (RL) agents, to build smarter and more optimized NPCs in games.
 
+Schola lets developers train RL agents in Unreal Engine and use them in games. Today it assumes each agent runs inference every frame, one at a time. This is an undesirable pattern in many scenarios:
+- In turn based games, per-frame inference wastes compute.
+- A simulations with thousands of pedestrains can't afford a separate inference call per character (building on top of Unreal MassEntity).
+
+We are building an extension to Schola, delivered as part of an Unreal Engine plugin with Python-side support, that adds optimization and support for five NPC types:
+1. **Adaptive NPCs** learn online from player behavior and adjust during play.
+2. **Event-Based NPCs** run inference only when subscribed game events fire, such as a turn starting or a player entering a zone.
+3. **Background NPCs** make large crowds affordable through batched inference, culling of off-screen agents, and integration with Unreal's Mass Entity framework.
+4. **Shared-Policy NPCs** reuse a common network base with specialized outputs for different roles, so related behaviors run faster than separate models.
+5. **Advanced Strategy NPCs** *(optional stretch goal)* look ahead by simulating opponent moves, as top strategy-game AIs do. This is hard to do with Schola's current inference interface.
+
+Our project lets adapt and deploy our NPC implementations in their games, instead of writing training and inference boilerplate. We target game developers using Unreal Engine who want learned NPC behavior across genres, especially turn-based strategy, FPS, and large-scale simulations, without building custom infrastructure.
+
+Alexander Cann, Member of Technical Staff at AMD, is our partner and lead developer of Schola. His interests cover deep neural networks, reinforcement learning, and the intersection of AI and games.
+
+Success looks like when a developer can seamlessly choose the correct NPC type, attach to a trained model, and get efficient behavior for their game genre and usecase.
 
 #### Q2: Who are your target users?
 
-  > Short (1 - 2 min' read max)
- * Be specific (e.g. a 'a third-year university student taking CSC301 and studying Computer Science' and not 'a student')
- * **Feel free to use personas. You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).**
+Primary user: A gameplay or AI programmer at an indie or mid-sized studio. They work in Unreal Engine daily using C++ and Blueprints, and know behavior trees and navigation well. They have basic machine learning knowledge, such as having followed a tutorial or trained a simple model, but they are not ML researchers.
+
+What they want: NPCs that feel smarter than hand-scripted behavior trees, without building a custom ML pipeline. For example, a programmer on a turn-based strategy game who wants an AI opponent that learns good tactics, but can't spend weeks on infrastructure.
+
+Their pain points: Running RL models in a shipping game means writing custom code for batching and scheduling. Frame budgets are tight, so per-frame inference for every NPC is too costly.
+
+Secondary users:
+- Technical or AI designers who want an streamlined UI/API to tune advanced NPC behavior in Unreal.
+- Machine learning engineers on game teams who train policies in Python (PyTorch, Stable Baselines3, Ray RLlib) and need an easy path to deploy them in Unreal.
+- Solo developers and game jam teams experimenting with learned NPCs, who benefit most from ready-made examples.
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem/need?
 
-> Short (1 - 2 min' read max)
- * We want you to "connect the dots" for us - Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
- * Explain the benefits of your product explicitly & clearly. For example:
-    * Save users time (how and how much?)
-    * Allow users to discover new information (which information? And, why couldn't they discover it before?)
-    * Provide users with more accurate and/or informative data (what kind of data? Why is it useful to them?)
-    * Does this application exist in another form? If so, how does your differ and provide value to the users?
-    * How does this align with your partner's organization's values/mission/mandate?
+Most teams today write custom inference code for each NPC type, run every agent's model every frame, or stick with behavior trees. Schola covers training and basic inference, but turn-based triggers, crowds, shared networks and online adaptation are left to the developer. Our project:
+
+- Saves time and money, helping developers avoid implementing writing boilerplate
+- Provides optimized NPC implementations, increasing performance and lowering demands on hardware
+- Makes advanced ML/RL techniques more accessible, such as through pretrained weights for common cases (e.g. basic crowd movement)
+- Enables completely new behavior, such as online learning powered NPCs
+
+Existing alternatives: Unreal's behavior trees and Mass Entity cover scripted behavior and large-scale simulation, not learned policies. Generic ML runtimes run models but do not typically offer support for turns, culling or entity batches.
+
+Partner fit: GPUOpen is AMD's open-source initiative giving game developers free tools to get the most out of GPU hardware. Efficient, batched, open-source inference for NPCs is squarely in that mission.
 
 #### Q4: What are the user stories that make up the Minumum Viable Product (MVP)?
 
@@ -45,11 +60,20 @@
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
 
-> Short (1-2 min' read max)
- * What is the technology stack? Specify languages, frameworks, libraries, PaaS products or tools to be used or being considered. 
- * How will you deploy the application?
- * Describe the architecture - what are the high level components or patterns you will use? Diagrams are useful here. 
- * Will you be using third party applications or APIs? If so, what are they?
+We extend Schola's existing architecture. Schola already pairs a Python training side with an Unreal C++ runtime, connected by gRPC. We add new runtime modules on the Unreal side and small additions on the Python side.
+
+(Existing) Stack:
+- C++ and Blueprints for Unreal Engine 5 plugin modules
+- Python for training and model export, using Schola's existing Stable Baselines3, Ray RLlib and Gymnasium adapters, plus PyTorch
+- Protocol Buffers and gRPC for Python-to-Unreal communication (already in Schola)
+- Unreal's Neural Network Engine (NNE), via Schola's ScholaNNE module, for in-game inference
+
+Architecture: We simply add new modules on top of the inference and interactor layers, roughly one per NPC type:
+- Event-based scheduler: triggers inference from subscribed game events
+- Batched inference manager: groups many agents into one call, with culling and Mass Entity integration
+- Shared-policy runner: runs a common network base once, then branch out
+- Online adaptation: streams player-behavior data over gRPC to Python, which updates the policy and returns new weights
+- Search-based strategy support (optional): a lookahead interface for simulating opponent moves
 
 ----
 ## Intellectual Property Confidentiality Agreement 
