@@ -38,10 +38,12 @@
 
 #### Q4: What are the user stories that make up the Minumum Viable Product (MVP)?
 
- * At least 5 user stories concerning the main features of the application - note that this can broken down further
- * You must follow proper user story format (as taught in lecture) ```As a <user of the app>, I want to <do something in the app> in order to <accomplish some goal>```
- * User stories must contain acceptance criteria. Examples of user stories with different formats can be found here: https://www.justinmind.com/blog/user-story-examples/. **It is important that you provide a link to an artifact containing your user stories**.
- * If you have a partner, these must be reviewed and accepted by them. You need to include the evidence of partner approval (e.g., screenshot from email) or at least communication to the partner (e.g., email you sent)
+* Accessible deployment: As a beginner game developer, I want to integrate a pretrained ML policy into an NPC using a guided setup, so that I can add learned behavior without building custom ML infrastructure.
+* Learning during gameplay: As a game developer, I want NPC policies to learn from player interactions during gameplay, so that NPCs can adapt their strategies to the player’s behavior.
+* Python policy integration: As a machine learning engineer, I want to deploy policies trained in Python directly into Unreal without rewriting their inference logic, so that I can quickly test model changes in the game environment.
+* Designer controls: As a technical designer, I want to configure NPC observations, actions, and policy settings through Unreal’s editor, so that I can tune behavior without modifying the underlying ML integration code.
+* Large-scale simulation: As a researcher, I want to run many ML-controlled agents simultaneously in a simulated environment, so that I can study interactions and emergent behavior in complex scenarios.
+
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
 
