@@ -92,12 +92,19 @@ List each team member and:
  * Why did you choose them to take that role? Specify if they are interested in learning that part, experienced in it, or any other reasons. Do no make things up. This part is not graded but may be reviewed later.
  
 Max - Partner liaison, Background NPCs
+
 Prithvi - Event-Based and Background NPCs
-Clementine -Shared Policy NPCs: She's interested in shared-policy inference because it combines machine learning, inference optimization, and system integration. 
+
+Clementine - Shared Policy NPCs: She's interested in shared-policy inference because it combines machine learning, inference optimization, and system integration. 
+
 Jason - Online learning: He is interested in evaluating ML algorithms, as well as learning more about model updating and data pipelines
+
 Jaela - Background/shared policy Npcs (inference): She is interested in machine learning engineering and wants to learn more about efficient model inference
+
 Jace - Online learning: Similarly to Olivia, he is interested in this because game dev has always been a direction he’s wanted to explore
+
 Olivia - Online learning: She is interested in this because of her strong gamedev background: online learning has a more tangible effect on games which is something she would like to explore
+
 Chloe - Online learning: Chloe is most interested in the online learning portion because she has an interest in video games and game development, which the online learning portion is has large implications for
 
 
@@ -109,7 +116,7 @@ Describe meetings (and other events) you are planning to have.
  * Other events could be coding sessions, code reviews, quick weekly sync meeting online, etc.
  * You should have 2 meetings with your project partner (if you have one) before D1 is due. Describe them here:
    * You must keep track of meeting minutes and add them to your repo under "deliverables/minutes" folder
-   * You must have a regular meeting schedule established for the rest of the term.  
+   * You must have a regular meeting schedule established for the rest of the term.
 
 We plan to meet weekly as a team over discord to share progress, discuss any issues, and plan our next steps. We will also schedule additional meetings or coding sessions when needed, especially for debugging and integrating different parts of the project. We will also use GitHub issues to track tasks and pull requests to review each other's code.
 
@@ -133,15 +140,22 @@ We use Discord to communicate, with separate channels for things like meeting su
 #### Q10: What are the rules regarding how your team works?
 
 **Communications:**
-_What is the expected frequency? What methods/channels will be used?_
+
+What is the expected frequency? What methods/channels will be used?
+
 Ping each other on discord for quick internal communication, discord calls for team meetings; Microsoft teams for partner communication/ weekly meetings with AMD members/ more formal project discussions
-_If you have a partner project, what is your process for communicating with your partner? Who is responsible?_
+
+If you have a partner project, what is your process for communicating with your partner? Who is responsible?
 Through Microsoft Teams. The partner liaison (Max) is responsible for following up and communicating on behalf of the team. We take meeting notes as well and formalize ideas and expectations regularly after meetings 
 
 **Collaboration:**
-_How are people held accountable for attending meetings, completing action items? What is your process?_
+
+How are people held accountable for attending meetings, completing action items? What is your process?
+
 If a group member is late/not showing up for a meeting, we will @ping them on Discord (our main communication platform). In our server, we organize by channels, such as announcements and to-do’s, and we ping members according to the message content. 
-_How will you address the issue if one person doesn't contribute or is not responsive?_
+
+How will you address the issue if one person doesn't contribute or is not responsive?
+
 First of all, we will try to resolve the situation through contacting the person and sorting out the reason behind their lack of contribution. We will reiterate the tasks they were assigned and the communication standards we agreed upon. However, if they are not responsive for a period of time, we will escalate the issue to the TA, outlining the efforts we made to reconcile the issue ourselves.
 
 ## Organisation Details
@@ -178,7 +192,7 @@ A successful project would deliver working, tested, and documented implementatio
   * Lack of clarity in execution or decision-making
   * Limited access to data, systems, or other dependencies
   * User stories that are too abstract or too simple
-* For each risk, provide a brief bullet point and then explain the risk in detail. 
+* For each risk, provide a brief bullet point and then explain the risk in detail.
 
 This project involves several NPC features, each with different requirements. Implementing and testing all four features might be challenging.
 
