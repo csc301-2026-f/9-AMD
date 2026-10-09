@@ -60,11 +60,6 @@ Partner fit: GPUOpen is AMD's open-source initiative giving game developers free
 * Large-scale simulation: As a researcher, I want to run many ML-controlled agents simultaneously in a simulated environment, so that I can study interactions and emergent behavior in complex scenarios.
 
 
-For our team-building activity, we decided to play Wordle together online. During this activity, we were able to get to know each other better and it was a lot of fun. Some fun facts we collected were that Chloe used to have a pet turtle, and both Olivia and Jace can type 160+ wpm.
-
-<img width="455" height="345" alt="Screenshot 2026-10-08 at 12 46 17 AM" src="https://github.com/user-attachments/assets/7df4454a-9ee6-4445-b7cf-16124ce3c45a" />
-
-
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
 
 We extend Schola's existing architecture. Schola already pairs a Python training side with an Unreal C++ runtime, connected by gRPC. We add new runtime modules on the Unreal side and small additions on the Python side.
@@ -110,6 +105,8 @@ Do a team-building activity in-person or online. This can be playing an online g
 
 For our team-building activity, we decided to play Wordle together online. During this activity, we were able to get to know each other better and it was a lot of fun. Some fun facts we collected were that Chloe used to have a pet turtle, and both Olivia and Jace can type 160+ wpm.
 
+<img width="455" height="345" alt="Screenshot 2026-10-08 at 12 46 17 AM" src="https://github.com/user-attachments/assets/7df4454a-9ee6-4445-b7cf-16124ce3c45a" />
+
 #### Q7: What are the roles & responsibilities on the team?
 
 Describe the different roles on the team and the responsibilities associated with each role (e.g., frontend, database). 
@@ -118,13 +115,21 @@ Describe the different roles on the team and the responsibilities associated wit
  * At least one person must be identified as the dedicated partner liaison. They need to have great organization and communication skills.
  * Everyone must contribute to code. Students who don't contribute to code enough will receive a lower mark at the end of the term.
 
+Our team is divided into four development roles, each responsible for a different class of NPC behavior. Each role is explained more in detail in **Q1.**
+
+1. **Adaptive NPCs:** 
+2. **Event-Based NPCs:** 
+3. **Background NPCs:** 
+4. **Shared-Policy NPCs:** 
+
+
 List each team member and:
  * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
  * Why did you choose them to take that role? Specify if they are interested in learning that part, experienced in it, or any other reasons. Do no make things up. This part is not graded but may be reviewed later.
- 
+
 Max - Partner liaison, Background NPCs
 
-Prithvi - Event-Based and Background NPCs
+Prithvi - Event-Based and Background NPCs.
 
 Clementine - Shared Policy NPCs: She's interested in shared-policy inference because it combines machine learning, inference optimization, and system integration. 
 
@@ -177,7 +182,7 @@ What is the expected frequency? What methods/channels will be used?
 Ping each other on discord for quick internal communication, discord calls for team meetings; Microsoft teams for partner communication/ weekly meetings with AMD members/ more formal project discussions
 
 If you have a partner project, what is your process for communicating with your partner? Who is responsible?
-Through Microsoft Teams. The partner liaison (Max) is responsible for following up and communicating on behalf of the team. We take meeting notes as well and formalize ideas and expectations regularly after meetings 
+Through Microsoft Teams. The partner liaison (Max) is responsible for following up and communicating on behalf of the team. We take meeting notes as well and formalize ideas and expectations regularly after meetings.
 
 **Collaboration:**
 
@@ -196,11 +201,7 @@ First of all, we will try to resolve the situation through contacting the person
 * Examples include product development that includes developing new features, or quality assurance that includes developing features that test the product reliability, or software maintenance that includes fixing crucial bugs in the product.
 * Provide examples of why you think you fit this role.
 
-Our team will be taking on a product development role as we are developing new features for AMD’s existing Schola framework. We have had discussions with our partner and have decided this is a good scope for the project and AMD’s needs. 
-
-We will be working on infrastructure for several NPC cases, including adaptive (NPCs that learn from player behaviour), event-driven (NPCs that perform inference only when certain events occur), background (NPCs that do batched inference), shared-policy (),
-
-We fit this role because the project requires a combination of machine-learning, game-engine development and software and system architecture. All members of the team have experience with C++, RL, and building software systems.
+Our team will be taking on a product development role as we are developing new features for AMD’s existing Schola framework. We have had discussions with our partner and have decided this is a good scope for the project and AMD’s needs. We will be working on infrastructure for several NPC cases, including as mentioned as prior: adaptive, event-driven, background, shared-policy, and advanced strategy NPCs [described in more detail in **Q1**]. We fit this role because the project requires a combination of machine-learning, game-engine development and software and system architecture. All members of the team have experience with C++, RL, and building software systems through coursework, projects and internships. Z
 
 #### Q12. How does your project fit within the overall product from the partner?
 * Look at the big picture of the product and think about how your project fits into this product.
