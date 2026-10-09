@@ -53,11 +53,11 @@ Partner fit: GPUOpen is AMD's open-source initiative giving game developers free
 
 #### Q4: What are the user stories that make up the Minumum Viable Product (MVP)?
 
-* Accessible deployment: As a beginner game developer, I want to integrate a pretrained ML policy into an NPC using a guided setup, so that I can add learned behavior without building custom ML infrastructure.
+* Event-based NPCs: As a game developer, I want NPCs to subscribe to selected gameplay events and perform inference when those events occur, so that I can coordinate their decisions with turn changes or other relevant game events.
 * Learning during gameplay: As a game developer, I want NPC policies to learn from player interactions during gameplay, so that NPCs can adapt their strategies to the player’s behavior.
-* Python policy integration: As a machine learning engineer, I want to deploy policies trained in Python directly into Unreal without rewriting their inference logic, so that I can quickly test model changes in the game environment.
-* Designer controls: As a technical designer, I want to configure NPC observations, actions, and policy settings through Unreal’s editor, so that I can tune behavior without modifying the underlying ML integration code.
-* Large-scale simulation: As a researcher, I want to run many ML-controlled agents simultaneously in a simulated environment, so that I can study interactions and emergent behavior in complex scenarios.
+* Efficient background agents: As a researcher, I want to batch inference requests across many background agents, including agents managed through Unreal’s Mass Entity framework, so that I can study large-scale interactions between ML-controlled agents while staying within the simulation’s performance budget.
+* Shared-policy NPCs: As a machine learning engineer, I want NPC policies with a shared network backbone and specialized output heads to reuse the backbone’s computation for the same observation, so that I can produce multiple specialized decisions with less computation than running each policy independently.
+* Advanced strategy NPCs: As a game developer, I want NPCs to evaluate possible future actions and opponent responses using a search strategy such as Monte Carlo Tree Search, so that they can make decisions that account for longer-term consequences.
 
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
