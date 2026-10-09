@@ -94,6 +94,8 @@ Architecture: We simply add new modules on top of the inference and interactor l
 
 Briefly describe which option you have agreed to.
 
+Our code will be released under the MIT License, consistent with the existing Schola codebase, and AMD will have access to the deployed system during the course.
+
 ----
 
 ## Teamwork Details
@@ -117,9 +119,9 @@ Describe the different roles on the team and the responsibilities associated wit
  * At least one person must be identified as the dedicated partner liaison. They need to have great organization and communication skills.
  * Everyone must contribute to code. Students who don't contribute to code enough will receive a lower mark at the end of the term.
 
-Our team is divided into four development roles, each responsible for a different class of NPC behavior. Each role is explained more in detail in **Q1.**
+Our team is divided into four development roles, each responsible for a different class of NPC behavior. Each role is responsible for implementing the respective NPC detailed in **Q1.**
 
-1. **Adaptive NPCs:** 
+1. **Adaptive NPCs/Online learning:** 
 2. **Event-Based NPCs:** 
 3. **Background NPCs:** 
 4. **Shared-Policy NPCs:** 
@@ -129,22 +131,14 @@ List each team member and:
  * A description of their role(s) and responsibilities including the components they'll work on and non-software related work
  * Why did you choose them to take that role? Specify if they are interested in learning that part, experienced in it, or any other reasons. Do no make things up. This part is not graded but may be reviewed later.
 
-Max - Partner liaison, Background NPCs
-
-Prithvi - Event-Based and Background NPCs.
-
-Clementine - Shared Policy NPCs: She's interested in shared-policy inference because it combines machine learning, inference optimization, and system integration. 
-
-Jason - Online learning: He is interested in evaluating ML algorithms, as well as learning more about model updating and data pipelines
-
-Jaela - Background/shared policy Npcs (inference): She is interested in machine learning engineering and wants to learn more about efficient model inference
-
-Jace - Online learning: Similarly to Olivia, he is interested in this because game dev has always been a direction he’s wanted to explore
-
-Olivia - Online learning: She is interested in this because of her strong gamedev background: online learning has a more tangible effect on games which is something she would like to explore
-
-Chloe - Online learning: Chloe is most interested in the online learning portion because she has an interest in video games and game development, which the online learning portion is has large implications for
-
+* Max - Partner liaison, Background NPCs
+* Prithvi - Event-Based and Background NPCs.
+* Clementine - Shared Policy NPCs: She's interested in shared-policy inference because it combines machine learning, inference optimization, and system integration. 
+* Jason - Adaptive NPCs/Online learning: He is interested in evaluating ML algorithms, as well as learning more about model updating and data pipelines.
+* Jaela - Background/shared policy Npcs (inference): She is interested in machine learning engineering and wants to learn more about efficient model inference.
+* Jace - Adaptive NPCs/Online learning: Similarly to Olivia, he is interested in this because game dev has always been a direction he’s wanted to explore.
+* Olivia - Adaptive NPCs/Online learning: She is interested in this because of her strong gamedev background: online learning has a more tangible effect on games which is something she would like to explore.
+* Chloe - Adaptive NPCs/Online learning: Chloe is most interested in the online learning portion because she has an interest in video games and game development, which the online learning portion is has large implications for.
 
 #### Q8: How will you work as a team?
 
