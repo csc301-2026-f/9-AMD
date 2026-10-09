@@ -1,0 +1,22 @@
+// Copyright (c) 2024 Advanced Micro Devices, Inc. All Rights Reserved.
+syntax = "proto3";
+
+package Schola;
+
+import "Spaces.proto";
+
+message AgentDefinition {
+    Space obs_space = 1;
+    Space action_space = 2;
+    string agent_type = 3;
+}
+
+message EnvironmentDefinition
+{
+    map<string, AgentDefinition> agent_definitions = 1;
+}
+
+message TrainingDefinition
+{   
+    repeated EnvironmentDefinition environment_definitions = 1;
+}

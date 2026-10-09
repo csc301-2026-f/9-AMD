@@ -1,0 +1,3 @@
+# Copyright (c) 2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+"""Stable-Baselines3 Schola tests."""

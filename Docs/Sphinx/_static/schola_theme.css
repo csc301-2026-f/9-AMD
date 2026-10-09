@@ -1,0 +1,22 @@
+
+.wy-side-nav-search, .wy-nav-top {
+    background: #ffffff;
+    }
+
+.wy-nav-side {
+    background: #000000;
+    }
+
+.wy-menu-vertical header, .wy-menu-vertical p.caption {
+    color: #ed1c24;
+    }
+
+ueb-blueprint {
+    margin-bottom: 10px;
+}
+
+.option-list dt kbd {
+    background: #e7f2fa;
+    padding: 6px;
+    border-top: 3px solid #6ab0de;
+}

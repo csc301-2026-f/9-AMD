@@ -1,0 +1,88 @@
+##############################################################################
+# Schola – Docker Cluster Training Simulation
+#
+# Simulates a KubeRay-style deployment on a single machine:
+#   • ray-head  — Ray head + training driver (+ a mock-UE for space discovery)
+#   • learner   — Dedicated learner node(s) (gradient computation, weight updates)
+#   • worker-0  — Ray worker + mock-UE gRPC server on port 50051
+#   • worker-1  — Ray worker + mock-UE gRPC server on port 50051
+#
+# Each worker behaves like a K8s pod with a UE sidecar container: the Ray
+# env_runner connects to localhost:50051 inside the same network namespace.
+# Learner nodes have no UE server — they only run the PPO learner process.
+#
+# Usage (from the repository root):
+#   docker compose build
+#   docker compose up                            # 1 learner, 2 workers
+#   docker compose up --scale learner=3          # 3 learners, 2 workers
+##############################################################################
+
+services:
+  ray-head:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-head
+    command: /opt/sim/head_entrypoint.sh
+    environment:
+      SCHOLA_GRPC_PORT: "50051"
+      HEAD_CPUS: "0"
+      NUM_WORKERS: "2"
+      NUM_LEARNERS: "${NUM_LEARNERS:-1}"
+      TRAIN_TIMESTEPS: "${TRAIN_TIMESTEPS:-2000}"
+      WORKER_WAIT: "30"
+    ports:
+      - "8265:8265"           # Ray Dashboard
+    networks:
+      - cluster
+    shm_size: "2g"
+
+  learner:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    command: /opt/sim/learner_entrypoint.sh
+    environment:
+      RAY_HEAD_ADDRESS: "ray-head:6379"
+      LEARNER_CPUS: "${LEARNER_CPUS:-2}"
+    depends_on:
+      - ray-head
+    networks:
+      - cluster
+    shm_size: "2g"
+
+  worker-0:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-worker-0
+    command: /opt/sim/worker_entrypoint.sh
+    environment:
+      RAY_HEAD_ADDRESS: "ray-head:6379"
+      SCHOLA_GRPC_PORT: "50051"
+      WORKER_CPUS: "1"
+    depends_on:
+      - ray-head
+    networks:
+      - cluster
+    shm_size: "2g"
+
+  worker-1:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-worker-1
+    command: /opt/sim/worker_entrypoint.sh
+    environment:
+      RAY_HEAD_ADDRESS: "ray-head:6379"
+      SCHOLA_GRPC_PORT: "50051"
+      WORKER_CPUS: "1"
+    depends_on:
+      - ray-head
+    networks:
+      - cluster
+    shm_size: "2g"
+
+networks:
+  cluster:
+    driver: bridge

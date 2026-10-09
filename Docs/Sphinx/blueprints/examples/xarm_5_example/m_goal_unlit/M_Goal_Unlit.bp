@@ -1,0 +1,26 @@
+Begin Object Class=/Script/Engine.MaterialExpressionVectorParameter Name="MaterialExpressionVectorParameter_0" ExportPath="/Script/Engine.MaterialExpressionVectorParameter'/Game/Examples/XArm-2/Blueprints/M_Goal_Unlit.M_Goal_Unlit:MaterialExpressionVectorParameter_0'"
+   DefaultValue=(R=1.000000,G=0.000000,B=1.000000,A=1.000000)
+   ParameterName="Color"
+   ExpressionGUID=879247974178D5834A020C93772B4A69
+   MaterialExpressionEditorX=-640
+   MaterialExpressionEditorY=136
+   MaterialExpressionGuid=101369F84611EF6F31A51F90D9D21DBC
+   Material="/Script/Engine.Material'M_Goal_Unlit'"
+End Object
+Begin Object Class=/Script/Engine.MaterialExpressionScalarParameter Name="MaterialExpressionScalarParameter_0" ExportPath="/Script/Engine.MaterialExpressionScalarParameter'/Game/Examples/XArm-2/Blueprints/M_Goal_Unlit.M_Goal_Unlit:MaterialExpressionScalarParameter_0'"
+   DefaultValue=10.000000
+   ParameterName="Intensity"
+   ExpressionGUID=CB36C02948907C866BC9EFBAF0E35DA6
+   MaterialExpressionEditorX=-640
+   MaterialExpressionEditorY=368
+   MaterialExpressionGuid=D58ED6484CDDD9D96361AF893F8DDA29
+   Material="/Script/Engine.Material'M_Goal_Unlit'"
+End Object
+Begin Object Class=/Script/Engine.MaterialExpressionMultiply Name="MaterialExpressionMultiply_0" ExportPath="/Script/Engine.MaterialExpressionMultiply'/Game/Examples/XArm-2/Blueprints/M_Goal_Unlit.M_Goal_Unlit:MaterialExpressionMultiply_0'"
+   A=(Expression="/Script/Engine.MaterialExpressionVectorParameter'M_Goal_Unlit:MaterialExpressionVectorParameter_0'",Mask=1,MaskR=1,MaskG=1,MaskB=1)
+   B=(Expression="/Script/Engine.MaterialExpressionScalarParameter'M_Goal_Unlit:MaterialExpressionScalarParameter_0'")
+   MaterialExpressionEditorX=-336
+   MaterialExpressionEditorY=149
+   MaterialExpressionGuid=3EB8D03745E34C5565DD6BA57CDD4D9B
+   Material="/Script/Engine.Material'M_Goal_Unlit'"
+End Object

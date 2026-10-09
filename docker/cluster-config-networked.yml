@@ -1,0 +1,154 @@
+##############################################################################
+# Schola – Networked Docker Cluster Simulation (volume-mount edition)
+#
+# Simulates a Kubernetes topology where UE runs in SEPARATE pods from
+# the Ray workers.  gRPC traffic crosses the Docker network — no localhost.
+#
+#   ray-head    — Ray head + training driver (no scheduled work)
+#   ue-disc     — mock UE for one-shot space discovery (head connects here)
+#   learner     — Dedicated learner node(s) (gradient computation, weight updates)
+#   ue-1 / ue-2 — mock UE gRPC servers (named to match Ray worker indices)
+#   worker-1    — Ray worker, connects to ue-1 via URL template
+#   worker-2    — Ray worker, connects to ue-2 via URL template
+#
+# The training driver sets url="ue-{worker_index}" in env_config;
+# ScholaEnvRunner expands the template on each worker so that
+# worker 1 → ue-1, worker 2 → ue-2, etc.
+#
+# Volume mounts:
+#   - Simulation scripts are mounted from the host (no rebuild on change).
+#   - Test mock-server code is mounted from the host.
+#
+# Usage (from the repository root):
+#   docker compose -f cluster-config-networked.yml up               # 1 learner
+#   docker compose -f cluster-config-networked.yml up --scale learner=3
+##############################################################################
+
+services:
+
+  # ─── Mock UE servers (separate "pods") ────────────────────────────
+
+  ue-disc:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-ue-disc
+    command: python /opt/sim/mock_ue_server.py --port 50051
+    volumes:
+      - ./cluster-sim/mock_ue_server.py:/opt/sim/mock_ue_server.py:ro
+      - ../Test/envs:/opt/test_envs:ro
+    networks:
+      - cluster
+
+  ue-1:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-ue-1
+    command: python /opt/sim/mock_ue_server.py --port 50051
+    volumes:
+      - ./cluster-sim/mock_ue_server.py:/opt/sim/mock_ue_server.py:ro
+      - ../Test/envs:/opt/test_envs:ro
+    networks:
+      - cluster
+
+  ue-2:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-ue-2
+    command: python /opt/sim/mock_ue_server.py --port 50051
+    volumes:
+      - ./cluster-sim/mock_ue_server.py:/opt/sim/mock_ue_server.py:ro
+      - ../Test/envs:/opt/test_envs:ro
+    networks:
+      - cluster
+
+  # ─── Ray head ─────────────────────────────────────────────────────
+
+  ray-head:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-head
+    command: /opt/sim/head_networked_entrypoint.sh
+    environment:
+      DISCOVERY_GRPC_URL: "ue-disc"
+      DISCOVERY_GRPC_PORT: "50051"
+      HEAD_CPUS: "0"
+      NUM_WORKERS: "2"
+      NUM_LEARNERS: "${NUM_LEARNERS:-1}"
+      TRAIN_TIMESTEPS: "${TRAIN_TIMESTEPS:-2000}"
+      WORKER_WAIT: "30"
+    volumes:
+      - ./cluster-sim/train_driver_networked.py:/opt/sim/train_driver_networked.py:ro
+      - ./cluster-sim/head_networked_entrypoint.sh:/opt/sim/head_networked_entrypoint.sh:ro
+    ports:
+      - "8265:8265"
+    depends_on:
+      - ue-disc
+      - ue-1
+      - ue-2
+    networks:
+      - cluster
+    shm_size: "2g"
+
+  # ─── Dedicated learner(s) (gradient computation, weight updates) ──
+
+  learner:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    command: /opt/sim/learner_entrypoint.sh
+    environment:
+      RAY_HEAD_ADDRESS: "ray-head:6379"
+      LEARNER_CPUS: "${LEARNER_CPUS:-2}"
+    volumes:
+      - ./cluster-sim/learner_entrypoint.sh:/opt/sim/learner_entrypoint.sh:ro
+    depends_on:
+      - ray-head
+    networks:
+      - cluster
+    shm_size: "2g"
+
+  # ─── Ray workers (connect to UE over the network via URL template) ─
+
+  worker-1:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-worker-1
+    command: /opt/sim/worker_networked_entrypoint.sh
+    environment:
+      RAY_HEAD_ADDRESS: "ray-head:6379"
+      WORKER_CPUS: "1"
+    volumes:
+      - ./cluster-sim/worker_networked_entrypoint.sh:/opt/sim/worker_networked_entrypoint.sh:ro
+    depends_on:
+      - ray-head
+      - ue-1
+    networks:
+      - cluster
+    shm_size: "2g"
+
+  worker-2:
+    build:
+      context: ..
+      dockerfile: docker/cluster-sim/Dockerfile
+    container_name: schola-worker-2
+    command: /opt/sim/worker_networked_entrypoint.sh
+    environment:
+      RAY_HEAD_ADDRESS: "ray-head:6379"
+      WORKER_CPUS: "1"
+    volumes:
+      - ./cluster-sim/worker_networked_entrypoint.sh:/opt/sim/worker_networked_entrypoint.sh:ro
+    depends_on:
+      - ray-head
+      - ue-2
+    networks:
+      - cluster
+    shm_size: "2g"
+
+networks:
+  cluster:
+    driver: bridge

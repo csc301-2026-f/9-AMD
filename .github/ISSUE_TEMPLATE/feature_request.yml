@@ -1,0 +1,48 @@
+name: Feature or improvement
+description: Suggest an idea or improvement for Schola
+title: "[Feature] Short summary"
+labels:
+  - enhancement
+type: Feature
+body:
+  - type: textarea
+    id: summary
+    attributes:
+      label: Summary
+      description: A brief overview of what you are suggesting.
+      placeholder: Ex. Add a CLI flag to export ONNX models without launching Unreal.
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivation
+    attributes:
+      label: Motivation (optional)
+      description: If applicable, describe the use case, pain point, or gap this would address. Leave blank for general improvements or ideas.
+      placeholder: Ex. Today I have to [...] which is slow / awkward / missing.
+    validations:
+      required: false
+
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+      description: What you would like to see added, changed, or improved. Be as specific as you can.
+    validations:
+      required: true
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Describe alternatives you've considered
+      description: A clear and concise description of any alternative solutions or features you've considered.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context or screenshots about the feature request here. You can drag and drop images into this field.
+    validations:
+      required: false
