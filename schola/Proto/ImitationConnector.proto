@@ -1,0 +1,36 @@
+// Copyright (c) 2025 Advanced Micro Devices, Inc. All Rights Reserved.
+syntax = "proto3";
+
+package Schola;
+
+
+import "ImitationState.proto";
+import "StateUpdates.proto";
+import "Definitions.proto";
+
+
+message ImitationConnectorStartRequest
+{
+    map<int32, EnvironmentSettings> environments = 1;
+}
+
+message ImitationConnectorStartResponse
+{
+    //Empty placeholder message
+}
+
+message ImitationStateRequest
+{
+    // Empty
+}
+
+message ImitationDefinitionRequest
+{
+    // Empty
+}
+
+service ImitationConnectorService {
+  rpc RequestState(ImitationStateRequest) returns (ImitationState);
+  rpc RequestTrainingDefinition(ImitationDefinitionRequest) returns (TrainingDefinition);
+  rpc StartImitationConnector(ImitationConnectorStartRequest) returns (ImitationConnectorStartResponse);
+}

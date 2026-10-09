@@ -1,0 +1,46 @@
+cff-version: 1.2.0
+title: Schola
+message: >-
+  If you use this software, please cite it using the
+  metadata from this file.
+type: software
+authors:
+  - given-names: Alexander
+    family-names: Cann
+    email: alexcann@amd.com
+    affiliation: AMD
+  - given-names: Tian Yue
+    family-names: Liu
+    email: TianYue.Liu@amd.com
+    affiliation: AMD
+  - given-names: Nathan
+    family-names: Hung
+    email: Nathan.Hung@amd.com
+    affiliation: AMD
+  - given-names: Noah
+    family-names: Monti
+    email: Noah.Monti@amd.com
+    affiliation: AMD
+  - given-names: Mehdi
+    family-names: Saeedi
+    email: Mehdi.Saeedi@amd.com
+    affiliation: AMD
+contact:
+  - name: Schola Team
+    email: schola@amd.com
+    affiliation: AMD
+repository-code: 'https://github.com/GPUOpen-LibrariesAndSDKs/Schola'
+url: 'https://gpuopen.com/amd-schola/'
+abstract: >-
+  Schola is a plugin for enabling Reinforcement Learning
+  (RL) in Unreal Engine. It provides tools to help
+  developers create environments, define agents, and connect
+  to python-based RL frameworks such as OpenAI Gym, RLlib or
+  Stable Baselines 3 for training agents with RL.
+keywords:
+  - Reinforcement Learning
+  - Unreal Engine 5
+  - Python
+license: MIT
+version: '2.1.0'
+date-released: '2025-05-19'

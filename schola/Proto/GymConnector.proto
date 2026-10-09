@@ -1,0 +1,33 @@
+// Copyright (c) 2024 Advanced Micro Devices, Inc. All Rights Reserved.
+syntax = "proto3";
+
+
+package Schola;
+
+import "Definitions.proto";
+import "State.proto";
+import "StateUpdates.proto";
+
+
+message TrainingDefinitionRequest {}
+
+enum AutoResetType {
+    SAME_STEP = 0; //Default value is SAMESTEP for backwards compatibility
+    NEXT_STEP = 1;
+    DISABLED = 2;
+}
+
+message GymConnectorStartRequest {
+    AutoResetType autoreset_type = 1;
+}
+
+//this could potentially get an observation at some point
+message GymConnectorStartResponse {}
+
+message InitialStateRequest {}
+
+service GymService {
+  rpc UpdateState(StateUpdate) returns (State);
+  rpc RequestTrainingDefinition(TrainingDefinitionRequest) returns (TrainingDefinition);
+  rpc StartGymConnector(GymConnectorStartRequest) returns (GymConnectorStartResponse);
+}

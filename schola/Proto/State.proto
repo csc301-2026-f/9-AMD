@@ -1,0 +1,49 @@
+// Copyright (c) 2024 Advanced Micro Devices, Inc. All Rights Reserved.
+syntax = "proto3";
+
+
+package Schola;
+
+import "Points.proto";
+
+
+message AgentState {
+    Point observations = 1; // Observation mapping for agents
+    float reward = 2;
+    bool terminated = 3;
+    bool truncated = 4;
+    map<string, string> info = 5;
+}
+
+message EnvironmentState {
+    map<string, AgentState> agent_states = 1;
+}
+
+message TrainingState {
+    repeated EnvironmentState environment_states = 1; // We allways send EnvStates during training
+}
+
+message InitialAgentState {
+    Point observations = 1;
+    map<string,string> info = 4;
+}
+
+message InitialEnvironmentState {
+    map<string, InitialAgentState> agent_states = 1;
+}
+
+message InitialState {
+    map<int32, InitialEnvironmentState> environment_states = 1;
+}
+
+message State {
+    oneof optional_training_state 
+    {
+        TrainingState training_state = 1;
+    }
+    
+    oneof optional_initial_state
+    {
+        InitialState initial_state = 2;
+    }
+}

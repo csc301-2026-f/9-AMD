@@ -1,0 +1,78 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "2.1.0",
+	"FriendlyName": "Schola",
+	"Description": "Schola is a plugin for enabling Reinforcement Learning (RL) in Unreal Engine. It provides tools to help developers create environments, define agents, and connect to python-based RL frameworks such as OpenAI Gym, RLlib or Stable Baselines 3 for training agents with RL.",
+	"Category": "AI",
+	"CreatedBy": "AMD",
+	"CreatedByURL": "",
+	"DocsURL": "https://gpuopen.com/manuals/schola/schola-index/",
+	"MarketplaceURL": "",
+	"SupportURL": "mailto:schola@amd.com",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "Schola",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ScholaEditor",
+			"Type": "Editor",
+			"LoadingPhase": "PostEngineInit"
+		},
+		{
+			"Name": "ScholaProtobuf",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ScholaNNE",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ScholaInteractors",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ScholaTraining",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ScholaInferenceUtils",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ScholaImitation",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		},
+		{
+			"Name": "ScholaStateTree",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "EnhancedInput",
+			"Enabled": true
+		},
+		{
+			"Name": "StateTree",
+			"Enabled": true
+		},
+		{
+			"Name": "GameplayStateTree",
+			"Enabled": true
+		}
+	]
+}

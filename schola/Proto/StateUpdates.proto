@@ -1,0 +1,43 @@
+// Copyright (c) 2024 Advanced Micro Devices, Inc. All Rights Reserved.
+syntax = "proto3";
+
+package Schola;
+
+import "Points.proto";
+
+enum CommunicatorStatus {
+    GOOD = 0; //Can't use running here because protobuf doesn't like repeated enums in the same namespace
+    ERROR = 1;
+    CLOSED = 2;
+}
+
+message EnvironmentStep {
+    map<string, Point> updates = 1;
+}
+
+message EnvironmentSettings {
+    //Doing this instead of optional here for pyi support
+    oneof optional_seed {
+        int32 seed = 1;
+    }
+    map<string,string> options = 2;
+}
+
+message Reset
+{
+    map<int32, EnvironmentSettings> environments = 1;
+}
+
+message Step
+{
+   repeated EnvironmentStep environments = 1;
+}
+
+message StateUpdate {
+    oneof update
+    {
+        Reset reset = 1;
+        Step step = 2;
+    }
+    CommunicatorStatus status = 3;
+}
