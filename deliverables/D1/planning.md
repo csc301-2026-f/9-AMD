@@ -58,6 +58,8 @@ Partner fit: GPUOpen is AMD's open-source initiative giving game developers free
 * Efficient background agents: As a researcher, I want to batch inference requests across many background agents, including agents managed through Unreal’s Mass Entity framework, so that I can study large-scale interactions between ML-controlled agents while staying within the simulation’s performance budget.
 * Shared-policy NPCs: As a machine learning engineer, I want NPC policies with a shared network backbone and specialized output heads to reuse the backbone’s computation for the same observation, so that I can produce multiple specialized decisions with less computation than running each policy independently.
 * Advanced strategy NPCs: As a game developer, I want NPCs to evaluate possible future actions and opponent responses using a search strategy such as Monte Carlo Tree Search, so that they can make decisions that account for longer-term consequences.
+<img width="1686" height="728" alt="image" src="https://github.com/user-attachments/assets/12e21c4b-d702-4e88-98a8-31cfb19497be" />
+
 
 
 #### Q5: Have you decided on how you will build it? Share what you know now or tell us the options you are considering.
